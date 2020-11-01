@@ -19,9 +19,18 @@ def merge(array, p, q, r)
     if j == right.length
         array[k..r+1] = left[i..]
     end
-    puts array.to_a
+    print array.to_a
 end
 
+def merge_sort(array, p , r)
+    if p < r
+        q = (p + r) / 2
+        merge_sort(array, p, q)
+        merge_sort(array, q + 1, r)
+        merge(array, p, q, r)
+    end
+end
 
 items = [2, 4, 5, 7, 1, 2, 3, 6]
-merge(items, 0, 3, 7)
+#merge(items, 0, 3, 7)
+merge_sort(items, 0, (items.length-1))
